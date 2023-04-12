@@ -11,14 +11,18 @@ public class LinkedLists {
     }
     public Node head = null;
     public Node tail = null;
-    public void addNode(int data) {
+    public void append(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
-            tail = newNode;
+        } else if (head.next == null) {
+            head.next = newNode;
         } else {
-            tail.next = newNode;
-            tail = newNode;
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
         }
     }
     public void display() {
@@ -37,13 +41,11 @@ public class LinkedLists {
     }
     public static void main(String[] args) {
         LinkedLists link = new LinkedLists();
-        link.addNode(56);
+        link.append(56);
         link.display();
-        link.addNode(30);
+        link.append(30);
         link.display();
-        link.addNode(76);
+        link.append(76);
         link.display();
     }
 }
-
-
